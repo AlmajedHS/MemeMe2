@@ -10,6 +10,8 @@ import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate,UINavigationControllerDelegate, UITextFieldDelegate {
     
+    var memes = [Meme]()
+    
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet weak var topTextField: UITextField!
@@ -151,7 +153,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,UINaviga
     func save() {
         // Create the meme
         let memedImage = generateMemedImage()
-        _ = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: memedImage)
+        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: memedImage)
+        
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+        appDelegate.memes.append(meme)
     }
     
     @IBAction func shareButton(_ sender: Any) {
@@ -162,6 +168,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,UINaviga
         activityController.completionWithItemsHandler = { activity, success, items, error in
             if (success){
                 self.save()
+                self.navigationController?.popToRootViewController(animated: true)
                 self.dismiss(animated: true, completion: nil)
             }
         }
