@@ -284,6 +284,36 @@
             </objects>
             <point key="canvasLocation" x="-418" y="71"/>
         </scene>
+        <!--Meme Details View Controller-->
+        <scene sceneID="lYn-O1-S2d">
+            <objects>
+                <viewController storyboardIdentifier="detailsView" id="pAx-8f-9Sh" customClass="MemeDetailsViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bwC-rv-wzH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cGh-h7-YeI">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="gQM-qf-n9h" firstAttribute="bottom" secondItem="cGh-h7-YeI" secondAttribute="bottom" id="0Mn-pw-vgA"/>
+                            <constraint firstItem="gQM-qf-n9h" firstAttribute="top" secondItem="cGh-h7-YeI" secondAttribute="top" constant="20" id="HEN-9M-Qd9"/>
+                            <constraint firstItem="gQM-qf-n9h" firstAttribute="trailing" secondItem="cGh-h7-YeI" secondAttribute="trailing" id="iBi-dq-ncf"/>
+                            <constraint firstItem="cGh-h7-YeI" firstAttribute="leading" secondItem="gQM-qf-n9h" secondAttribute="leading" id="q4G-GU-ppH"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="gQM-qf-n9h"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="osV-Sk-FbD"/>
+                    <connections>
+                        <outlet property="imageDetails" destination="cGh-h7-YeI" id="STN-gx-Xhm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SaM-dE-sgs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-761" y="-813"/>
+        </scene>
     </scenes>
     <resources>
         <image name="keypad" width="30" height="30"/>

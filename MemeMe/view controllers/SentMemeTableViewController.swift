@@ -19,8 +19,15 @@ class SentMemeTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
       
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+        self.navigationController?.isNavigationBarHidden = false
+        tableView.reloadData()
     }
 
     // MARK: - Table view data source
@@ -40,6 +47,20 @@ class SentMemeTableViewController: UITableViewController {
         cell.memeLabel.text = meme.topText + " " + meme.bottomText
         
         return cell
+    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let vController = storyboard!.instantiateViewController(withIdentifier: "detailsView") as! MemeDetailsViewController
+        
+        let meme = memes[indexPath.row]
+        vController.meme = meme
+        
+        let backButton = UIBarButtonItem()
+        backButton.title = "Table View Controller"
+        navigationItem.backBarButtonItem = backButton
+        navigationController?.pushViewController(vController, animated: true)
+        
+        
     }
 
 }

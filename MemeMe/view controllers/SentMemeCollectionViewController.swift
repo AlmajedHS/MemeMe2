@@ -23,9 +23,24 @@ class SentMemeCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        flowLayout.minimumInteritemSpacing = 1
-        flowLayout.minimumLineSpacing = 1
-        flowLayout.itemSize = CGSize(width: 135, height: 135)
+        let spacex: CGFloat = 0.5
+        let spacey: CGFloat = 0.5
+        
+        let dimensionx = (self.view.frame.width -  2*spacex)/3
+        flowLayout.minimumLineSpacing = spacey
+        flowLayout.minimumInteritemSpacing = spacex
+        if self.view.frame.width < self.view.frame.height{
+            flowLayout.itemSize = CGSize( width: dimensionx , height: dimensionx)}
+        else{
+            flowLayout.itemSize = CGSize( width: dimensionx/1.5 , height: dimensionx/1.5)
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+        self.navigationController?.isNavigationBarHidden = false
+        collectionView.reloadData()
     }
         
     
@@ -46,6 +61,18 @@ class SentMemeCollectionViewController: UICollectionViewController {
         
         return cell
     }
-
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let vController = storyboard?.instantiateViewController(withIdentifier: "detailsView") as! MemeDetailsViewController
+        let meme = memes[indexPath.row]
+        vController.meme = meme
+        
+        
+        let leftBackButton = UIBarButtonItem()
+        leftBackButton.title = "Collection View"
+        navigationItem.backBarButtonItem = leftBackButton
+        navigationController?.pushViewController(vController, animated: true)
+        
+    }
    
 }

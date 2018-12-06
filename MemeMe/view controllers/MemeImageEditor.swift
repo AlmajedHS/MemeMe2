@@ -168,7 +168,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,UINaviga
         activityController.completionWithItemsHandler = { activity, success, items, error in
             if (success){
                 self.save()
-                self.navigationController?.popToRootViewController(animated: true)
+               
                 self.dismiss(animated: true, completion: nil)
             }
         }
@@ -181,6 +181,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,UINaviga
         bottomTextField.text = "BOTTOM"
         self.imagePickerView.image = nil
         shareButton.isEnabled = false
+        self.dismiss(animated: true, completion: nil)
     }
     
     override var prefersStatusBarHidden: Bool {
